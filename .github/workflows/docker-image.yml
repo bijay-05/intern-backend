@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build -t bijaypachhai/intern-backend:stable .
+      run: docker build -t bijaypachhai/intern-backend:stable -f Dockerfile.backend .
 
   push:
 
