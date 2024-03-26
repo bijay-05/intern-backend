@@ -40,7 +40,6 @@ jobs:
     steps:
     - name: Increase package version
       run: |
-        apt add --no-cache git
         npm version patch
         git add package.json
         git commit -m "increase package version"
