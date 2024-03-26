@@ -30,6 +30,20 @@ jobs:
       run: |
         docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
         docker push bijaypachhai/intern-backend:stable
+
+
+  increaseVersion:
+
+    runs-on: self-hosted
+    needs: push
+
+    steps:
+    - name: Increase package version
+      run: |
+        apt add --no-cache git
+        npm version patch
+        git add package.json
+        git commit -m "increase package version"
         
 
 
