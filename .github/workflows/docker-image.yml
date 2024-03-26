@@ -24,7 +24,13 @@ jobs:
 
     steps:
     - name: Push the Docker image
-      run: docker push bijaypachhai/intern-backend:stable
+      env:
+        DOCKERHUB_USER: ${{secrets.DOCKERHUB_USER}}
+        DOCKERHUB_PASSWORD: ${{secrets.DOCKERHUB_PASSWORD}}
+      run: |
+        docker login -u env.DOCKERHUB_USER -p env.DOCKERHUB_PASSWORD
+        docker push bijaypachhai/intern-backend:stable
+        
 
 
       
